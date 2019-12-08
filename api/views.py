@@ -12,5 +12,10 @@ def upload(request):
     return JsonResponse({"is_succeed": True})
 
 
-def download(request):
+def download(request, file_id):
     return JsonResponse({"is_succeed": True})
+
+
+def get_file_list(request):
+    return JsonResponse({"is_succeed": True,
+                         "files": []})
