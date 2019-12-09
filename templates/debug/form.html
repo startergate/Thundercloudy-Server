@@ -2,7 +2,9 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="/api/file" method="put">
+<form action="/api/file/" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="put"/>
+    <input type="text", name="title">
     <input type="file" name="file">
 <input type="submit" value="Vote">
 </form>

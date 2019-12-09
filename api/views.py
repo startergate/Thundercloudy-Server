@@ -1,8 +1,10 @@
 import json
-
 import requests
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+
+from api.models import UploadFileModel
+from .forms import UploadFileModelForm
 
 # Create your views here.
 
@@ -35,7 +37,13 @@ def session(request):
 
 
 def upload(request):
-    return JsonResponse({"is_succeed": True})
+    file = UploadFileModel(title="something random")
+    form = UploadFileModelForm(request.POST, request.FILES, instance=file)
+    if form.is_valid():
+        form.save()
+        return JsonResponse({"is_succeed": True})
+    else:
+        return HttpResponse(status=500)
 
 
 def download(request, file_id):
