@@ -6,5 +6,5 @@ from api.models import UploadFileModel
 class UploadFileModelForm(forms.ModelForm):
     class Meta:
         model = UploadFileModel
-        fields = ('title', 'file')
+        fields = ('user', 'file')
         app_label = 'api'

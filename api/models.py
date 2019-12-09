@@ -4,10 +4,8 @@ from django.db import models
 
 
 class UploadFileModel(models.Model):
-    class Meta:
-        # app_label = 'uploadFileModel'
-        pass
+
     def __str__(self):
         return self.title
-    title = models.CharField(max_length=50)
+    user = models.CharField(max_length=64)
     file = models.ImageField(blank=False, null=True)

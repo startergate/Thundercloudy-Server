@@ -51,5 +51,6 @@ def download(request, file_id):
 
 
 def get_file_list(request):
+
     return JsonResponse({"is_succeed": True,
                          "files": []})
