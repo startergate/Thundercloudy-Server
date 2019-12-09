@@ -1,0 +1,8 @@
+<h1>Upload Tester</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="/api/file" method="put">
+    <input type="file" name="file">
+<input type="submit" value="Vote">
+</form>
