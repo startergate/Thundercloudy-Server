@@ -13,7 +13,7 @@ def index(request):
 
 def session(request):
     if request.method != "POST":
-        return
+        return HttpResponse(status=500)
 
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
@@ -24,7 +24,6 @@ def session(request):
         "password": body["pw"],
         "isPermanent": True,
     }).json()
-
     if res["type"] == "error":
         return HttpResponse(status=500)
     return JsonResponse({
