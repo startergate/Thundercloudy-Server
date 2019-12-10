@@ -25,7 +25,9 @@ SECRET_KEY = '-_(j!hdkt7*+pxx@a@dow8w5=y+nm@_tf%0)ba7od(7m!lk=95'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'donote.co'
+]
 
 
 # Application definition
