@@ -39,6 +39,7 @@ def session(request):
 def upload(request):
     file = UploadFileModel(title="something random")
     form = UploadFileModelForm(request.POST, request.FILES, instance=file)
+    print(request.POST)
     if form.is_valid():
         form.save()
         return JsonResponse({"is_succeed": True})
