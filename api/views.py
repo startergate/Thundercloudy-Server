@@ -3,8 +3,8 @@ import requests
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-from api.models import UploadFileModel
-from .forms import UploadFileModelForm
+from api.models import UploadFileModel, Post
+from .forms import UploadFileModelForm, PostForm
 
 # Create your views here.
 
@@ -55,3 +55,25 @@ def get_file_list(request):
 
     return JsonResponse({"is_succeed": True,
                          "files": []})
+
+
+def post(request):
+
+    #body_unicode = request.body.decode('utf-8')
+    #body = json.loads(body_unicode)
+    posted = Post()
+    form = PostForm(request.POST, instance=posted)
+    #form.user = body["user"]
+    #form.content = body["content"]
+    #form.title = body["title"]
+    if form.is_valid():
+        form.save()
+        return JsonResponse({"is_succeed": True})
+    else:
+        return HttpResponse(status=500)
+
+
+def getall(request):
+    data = list(Post.objects.all().values())
+    print(str(data))
+    return JsonResponse(data, safe=False)
