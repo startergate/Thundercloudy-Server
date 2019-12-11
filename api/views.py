@@ -76,4 +76,4 @@ def post(request):
 def getall(request):
     data = list(Post.objects.all().values())
     print(str(data))
-    return JsonResponse(data, safe=False)
+    return JsonResponse({"response": data}, safe=False)
